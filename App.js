@@ -44,7 +44,8 @@ const styleCard = {
     backgroundColor: "#f0f0f0"
 }
 
-const RestCard = ({restName, cuisine, starRatting, time}) => {
+const RestCard = (props) => {
+    const {restName, cuisine, starRatting, time} = props;
     return (
         <div className="restCard" style={styleCard}>
             <img className="restLogo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200/ebcda29a62123bbf8bb8a33bbe2ab847" alt="restLogo" />
