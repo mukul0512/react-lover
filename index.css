@@ -1,3 +1,45 @@
-.heading {
-  color: red;
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black
+}
+
+.navItems {
+  padding: 0px 20px;
+}
+
+.navItems > ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.navItems > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+
+.restContainer {
+  display: flex; 
+  justify-content: space-around;
+  flex-wrap: wrap;
+ 
+}
+
+.restCard {
+  width: 200px;
+  height: 330px; 
+}
+
+.restCard:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.search {
+  padding: 10px;
+}
+
+.restLogo {
+  height: 50%;
+  width: 100%;
 }

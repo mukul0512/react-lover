@@ -1,141 +1,94 @@
+/*
+
+* Header
+  - Logo
+  - NavItems
+-----------------------------
+* Body
+  - Search
+  - RestContainer
+  * RestCard
+     - Image
+     - Name of rest, Star rating, cuisine, delivery tie 
+-----------------------------  
+* Footer
+  - Copyright
+  - Links
+  - Address
+  - Contact
+
+*/
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React.createElement => ReactElement(object) => HTMLElement(render)
-const heading = React.createElement("h1", { id: "heading" }, "React Lover using React.createElement()🚀"); // Not development friendly
-console.log(heading);
-
-// React Element - JSX is created by facebook Engineer's
-const jsxHeading = (<h1 className="heading"
-    tabIndex="1">
-    React Lover using JSX 🚀
-</h1>);
-console.log(jsxHeading);
-
-// React Functional Component
-const Heading2 = () => (
-    <h1 className="heading"
-        tabIndex="1">
-        React Lover using React Functional Component 🚀
-    </h1>
-);
-console.log(Heading2);
-
-// ------------------------------------------
-const fn = () => true;
-console.log(fn);
-
-// ==========================================
-const fn2 = () => {
-    return true;
-}
-console.log(fn2);
-
-// -----------------------------------------------
-const Heading3 = () => (
-    <h1 className="heading"
-        tabIndex="1">
-        React Lover using Arrow Function. 🚀
-    </h1>
-);
-
-console.log(Heading3);
-
-// ------------------------------------------------------
-const Heading4 = function () {
+const Header = () => {
     return (
-        <h1 className="heading"
-            tabIndex="1">
-            React Lover using Normal Function 🚀
-        </h1>
-    )
-};
-console.log(Heading4);
-
-//React Element
-
-const ReactElement = (
-    <span>
-        I'm a React Element 🚀
-    </span>
-)
-
-const HeadingElement2 = (
-    <h1 className="heading"
-        tabIndex="1">
-        {ReactElement}
-        React Lover using React Element 🚀
-    </h1>);
-console.log(HeadingElement2);
-
-// Majorly we have used this syntax
-const num = 12345;
-const HeadingComponent = () => {
-    return (
-        <div id="container">
-            {/* You can use React Component under JSX   */}
-            {/* component composition -> Composing two component into one another i.e <Heading3 /> */}
-            {/* Also there is no limit for the no of times you want to use it gives the same result at the no of times you do it.  */}
-            <Heading3 />
-            <Heading3 />
-            <Heading3 />
-            {/* You can also write like this  */}
-            <Heading3></Heading3>  {/* <Heading3 /> or <Heading3></Heading3> or {Heading3} these three things gives the same result  */}
-            {/* You can call a function under JSX  */}
-            {Heading3()}   { /*Function call  */}
-            <Heading4 />
-            {/* You can inject any JavaScript code under JSX  */}
-            <h2>{num}</h2>
-            <h1>{2 + 3}</h1>
-            {/* You can use React Element under JSX   */}
-            {HeadingElement2}
-            <h1 className="header">
-                React Lover Functional Component 🚀
-            </h1>
-            <p className="para">
-                This is a Testing process please calm down 🚀
-            </p>
+        <div className="header">
+            <div className="logoContainer">
+                <img className="logo" src="https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148987940.jpg?w=87&t=st=1720367870~exp=1720368470~hmac=167972146782708850090cf16efa9392e4b626c8ae8217a9236ea725779d8c22" alt="logo" />
+            </div>
+            <div className="navItems">
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
         </div>
     )
-};
-console.log(HeadingComponent);
+}
 
-const HeadingElement = (
-    <>
-        <HeadingComponent />
-        <h1 className="heading"
-            tabIndex="1">
-            {ReactElement}
-            {/* Note -> Don't put div inside h1 tag not a good practice  */}
-            {/* <HeadingComponent /> */}
-            React Lover using React Element 🚀
-        </h1>
-    </>
-);
-console.log(HeadingElement);
+const styleCard = {
+    backgroundColor: "#f0f0f0"
+}
 
-// const HeadingComponent2 = () => (
-//     <div id="heading">
-//         <h1 className="header2">
-//             React Lover Functional Component 🚀
-//         </h1>
-//     </div>
-// );
+const RestCard = () => {
+    return (
+        <div className="restCard" style={styleCard}>
+            <img className="restLogo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200/ebcda29a62123bbf8bb8a33bbe2ab847" alt="restLogo" />
+            <h3>Rolls King, KFC</h3>
+            <h4>Veg/Non-Veg Kabab Rolls</h4>
+            <h4>4.5 stars</h4>
+            <h4>38 minutes</h4>
+        </div>
+    )
+}
 
-// console.log(HeadingComponent2);
+const Body = () => {
+    return (
+        <div className="body">
+            <div className="search">
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+            <div className="restContainer">
+                {/* restCard  */}
+                <RestCard />
+                <RestCard />
+                <RestCard />
+                <RestCard />
+                <RestCard />
+            </div>
+        </div>
+    )
+}
+
+const AppLayout = () => {
+    return (
+        <div className="app">
+            {/* Header */}
+            < Header />
+
+            {/* Body */}
+            < Body />
+
+            {/* Footer */}
+        </div>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// Note -> We can only render a react element like this but not react component.
-// root.render(heading); // can be render ∵ it's a react element.
-// root.render(jsxHeading); // can be render ∵ it's a react element.
-
-// root.render(jsxHeading2); // We can't render like this
-// root.render(fn); // We can't render like this
-// root.render(fn2); // We can't render like this
-// root.render(HeadingComponent); // We can't render like this
-// root.render(HeadingComponent2); // We can't render like this
-
-// All the react component are render like the following
-// root.render(<HeadingComponent />);
-root.render(HeadingElement); //can be render a react component under react element
+root.render(<AppLayout />);
