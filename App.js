@@ -44,14 +44,15 @@ const styleCard = {
     backgroundColor: "#f0f0f0"
 }
 
-const RestCard = () => {
+const RestCard = (props) => {
+    console.log(props);
     return (
         <div className="restCard" style={styleCard}>
             <img className="restLogo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200/ebcda29a62123bbf8bb8a33bbe2ab847" alt="restLogo" />
-            <h3>Rolls King, KFC</h3>
-            <h4>Veg/Non-Veg Kabab Rolls</h4>
-            <h4>4.5 stars</h4>
-            <h4>38 minutes</h4>
+            <h3>{props.restName}</h3>
+            <h4>{props.cuisine}</h4>
+            <h4>{props.starRatting}</h4>
+            <h4>({props.time})</h4>
         </div>
     )
 }
@@ -65,11 +66,13 @@ const Body = () => {
             </div>
             <div className="restContainer">
                 {/* restCard  */}
-                <RestCard />
-                <RestCard />
-                <RestCard />
-                <RestCard />
-                <RestCard />
+                <RestCard restName="KFC" cuisine="Veg/Non-Veg Fast Food, All types" starRatting="4.4 star"  time="38 minutes" />
+                <RestCard restName="Rolls King," cuisine="Veg/Non-Veg Kabab Rolls, Extra Cheese Rolls" starRatting="4.4 star"  time="38 minutes" />
+                <RestCard restName="Swiggy" cuisine="Kadhai Panir, Paneer Butter Masala, Garlic Naan Bread" starRatting="4.4 star"  time="38 minutes" />
+                <RestCard restName="Zomato" cuisine="Breakfast, Lunch, Dinner" starRatting="4.4 star"  time="38 minutes" />
+                <RestCard restName="Domino's" cuisine="Various varieties Pizza" starRatting="4.4 star"  time="38 minutes" />
+                <RestCard restName="Pizza Hut" cuisine="Crispy and crunchy" starRatting="4.4 star"  time="38 minutes" />
+                <RestCard restName="Hungry Point" cuisine="Home made taste" starRatting="4.4 star"  time="38 minutes" />
             </div>
         </div>
     )
