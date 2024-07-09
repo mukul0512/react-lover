@@ -26,8 +26,10 @@
 }
 
 .restCard {
-  width: 200px;
-  height: 365px; 
+  margin: 5px;
+  padding: 5px;
+  /* width: 30%; */
+  /* height: 500px;  */
 }
 
 .restCard:hover {
