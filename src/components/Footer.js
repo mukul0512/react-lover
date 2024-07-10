@@ -8,7 +8,7 @@
 
 import React from "react";
 
-const Foot = () => {
+const Footer = () => {
     return (
       <div className="footer">
         <div className="footerContainer">
@@ -26,4 +26,4 @@ const Foot = () => {
     )
   }
 
-  export default Foot;
+  export default Footer;
