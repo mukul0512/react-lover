@@ -27,6 +27,7 @@ import Body from "./components/Body";
 import Foot from "./components/Footer";
 
 const AppLayout = () => {
+  console.log(< Body />);
   return (
     <div className="app">
       < Header />
