@@ -10,11 +10,42 @@
 */
 
 import RestCard from "./RestCard";
-import React, { useState } from "react";
-import restList from "../utils/restList";
+import React, { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+// import restList from "../utils/restList";
 
 const Body = () => {
-    const [listOfRest, setListOfRest] = useState(restList);
+    // const [listOfRest, setListOfRest] = useState(restList);
+    const [listOfRest, setListOfRest] = useState([]);
+
+    const [filteredRest, setFilteredRest] = useState([]);
+
+    const [searchText, setSearchText] = useState("");
+
+    console.log("Body Rendered");
+
+    useEffect(() => {
+        // console.log("useEffect Called");
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=12.9715987&lng=77.5945627");
+        const json = await data.json();
+        // console.log(json);
+        // Optional Chaining
+        const lastCardIndex = json?.data?.success?.cards.length - 1;
+        setListOfRest(json?.data?.success?.cards[lastCardIndex]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRest(json?.data?.success?.cards[lastCardIndex]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+    };
+
+    // Conditional Rendering
+    // if (listOfRest.length === 0) {
+    //     // return <h1>Loading ...</h1>
+    //     return <Shimmer />
+    // }
+
+    // console.log("Body rendered Called");
 
     // Local State Variable - Super powerful variable
     // const [listOfRest] = useState();
@@ -179,31 +210,42 @@ const Body = () => {
     //     }
     // ];
 
-    return (
+    // Conditional Rendering 
+    return listOfRest.length === 0 ? <Shimmer /> : (
         <div className="body">
-            <div className="search">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </div>
             <div className="filter">
-                <button className="filter-btn" onClick={() => {
-                    console.log("Button Clicked");
-                    //Filter logic here
-                    const filteredList = listOfRest.filter((rest) => rest.info.avgRating > 4.4);
-                    setListOfRest(filteredList);
+                <div className="search">
+                    <input className="search-box" type="text" placeholder="Search" value={searchText} onChange={(e) => {
+                        setSearchText(e.target.value);
+                    }} />
+                    <button className="search-btn" onClick={() => {
+                        // Filter the restaurant cards and update the UI
+                        // SearchText
+                        console.log(searchText);
+                        const filteredRest = listOfRest.filter((rest) => rest.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                        // setListOfRest(filteredRest);
+                        setFilteredRest(filteredRest);
+                    }}>Search</button>
+                    <button className="filter-btn" onClick={() => {
+                        console.log("Button Clicked");
+                        //Filter logic here
+                        const filteredList = listOfRest.filter((rest) => rest.info.avgRating > 4.3);
+                        setListOfRest(filteredList);
 
-                    // listOfRest = listOfRest.filter((rest) => rest.info.avgRating > 3.6);
-                    // console.log(listOfRest);
-                }}>
-                    Top Restaurants
-                </button>
+                        // listOfRest = listOfRest.filter((rest) => rest.info.avgRating > 3.6);
+                        // console.log(listOfRest);
+                    }}>
+                        Top Restaurants
+                    </button>
+                </div>
             </div>
             <div className="restContainer">
                 {/* restCard  */}
 
                 {   /* Good practice is using map filter reduce */
-                    // restList.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
-                    listOfRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
+                    filteredRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
+                    // listOfRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
+                    // listOfRest != null && listOfRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
 
                     // We must use key under map filter reduce method of JavaScript because React doesn't uniquely identify the RestCard. 
                     // It will re-render all the restCard once again. 

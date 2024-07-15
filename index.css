@@ -20,14 +20,14 @@
 
 .restContainer {
   display: flex; 
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
 }
 
 .restCard {
   margin: 5px;
   padding: 5px;
-  /* width: 30%; */
-  /* height: 500px;  */
+  width: 20%;
+  height: 500px; 
 }
 
 .restCard:hover {
@@ -35,15 +35,41 @@
   cursor: pointer;
 }
 
-.search {
-  padding: 10px;
+.filter {
+  display: flex;
 }
 
-.filter {
-  padding: 10px;
+.filter-btn {
+  margin: 20px;
+  cursor: pointer;
 }
 
 .restLogo {
   height: 50%;
   width: 100%;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 400px;
+  background-color: #f0f0f0;
+  margin: 20px;
+}
+
+.login {
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.search {
+  padding: 20px;
+}
+
+.search-btn {
+  cursor: pointer;
 }
