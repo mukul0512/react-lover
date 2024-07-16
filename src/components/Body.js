@@ -34,9 +34,8 @@ const Body = () => {
         const json = await data.json();
         // console.log(json);
         // Optional Chaining
-        const lastCardIndex = json?.data?.success?.cards.length - 1;
-        setListOfRest(json?.data?.success?.cards[lastCardIndex]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRest(json?.data?.success?.cards[lastCardIndex]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRest(json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRest(json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
     };
 
     // Conditional Rendering
