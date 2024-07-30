@@ -12,6 +12,7 @@
 import RestCard from "./RestCard";
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 // import restList from "../utils/restList";
 
 const Body = () => {
@@ -22,7 +23,7 @@ const Body = () => {
 
     const [searchText, setSearchText] = useState("");
 
-    console.log("Body Rendered");
+    // console.log("Body Rendered");
 
     useEffect(() => {
         // console.log("useEffect Called");
@@ -30,13 +31,13 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=12.9715987&lng=77.5945627");
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
         // console.log(json);
         // Optional Chaining
-        const lastCardIndex = json?.data?.success?.cards.length - 1;
-        setListOfRest(json?.data?.success?.cards[lastCardIndex]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRest(json?.data?.success?.cards[lastCardIndex]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        // const lastCardIndex = json?.data?.cards.length - 1;
+        setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
 
     // Conditional Rendering
@@ -211,7 +212,7 @@ const Body = () => {
     // ];
 
     // Conditional Rendering 
-    return listOfRest.length === 0 ? <Shimmer /> : (
+    return listOfRest.length == 0 ? <Shimmer /> : (
         <div className="body">
             <div className="filter">
                 <div className="search">
@@ -243,7 +244,11 @@ const Body = () => {
                 {/* restCard  */}
 
                 {   /* Good practice is using map filter reduce */
-                    filteredRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
+                    filteredRest.map((rest) => (
+                        <Link key={rest.info.id} to={"/city/bangalore/" + rest.info.id}>
+                            <RestCard restData={rest} />
+                        </Link>)
+                    )
                     // listOfRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
                     // listOfRest != null && listOfRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
 

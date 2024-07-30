@@ -24,10 +24,9 @@
 }
 
 .restCard {
-  margin: 5px;
+  margin: 2px;
   padding: 5px;
-  width: 20%;
-  height: 500px; 
+  max-width: 300px
 }
 
 .restCard:hover {
@@ -72,4 +71,26 @@
 
 .search-btn {
   cursor: pointer;
+}
+
+.about {
+  cursor: pointer;
+  color: red;
+  text-decoration: none;
+}
+
+.contact {
+  cursor: pointer;
+  color: red;
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+}
+
+.cart {
+  cursor: pointer;
+  text-decoration: none;
+  color: red;
 }
