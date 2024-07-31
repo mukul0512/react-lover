@@ -31,6 +31,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
 import RestMenu from "./components/RestMenu";
+import User from "./components/User";
 
 const AppLayout = () => {
   console.log(< Body />);

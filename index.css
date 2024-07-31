@@ -75,13 +75,11 @@
 
 .about {
   cursor: pointer;
-  color: red;
   text-decoration: none;
 }
 
 .contact {
   cursor: pointer;
-  color: red;
   text-decoration: none;
 }
 
@@ -92,5 +90,22 @@
 .cart {
   cursor: pointer;
   text-decoration: none;
-  color: red;
+}
+
+.user-container {
+  /* display: flex; */
+  flex-wrap: wrap;
+}
+
+.user-card {
+  padding: 5px;
+  margin: 2px;
+  max-width: 300px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.user-card:hover {
+  border: 1px solid black;
+  cursor: pointer;
 }
