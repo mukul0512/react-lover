@@ -5,9 +5,8 @@ import UserClass from './UserClass';
 const About = () => {
   return (
     <div className="about">
-      {/* <h1>This is About Us page.</h1> */}
-      <User />
-      <UserClass />
+      <User name={"Mukul Karnwal (function based) "} />
+      <UserClass location={"Bangalore (class based) "} contact={"@karnwal_mukul (class based)"} />
     </div>
   )
 }
