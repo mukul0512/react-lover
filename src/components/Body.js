@@ -13,6 +13,7 @@ import RestCard from "./RestCard";
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // import restList from "../utils/restList";
 
 const Body = () => {
@@ -39,6 +40,12 @@ const Body = () => {
         setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
+
+    const onlineStatus = useOnlineStatus();
+
+    if (onlineStatus === false) {
+        return <h1>Looks like you are offline!!! Please check your internet connection.</h1>
+    }
 
     // Conditional Rendering
     // if (listOfRest.length === 0) {
