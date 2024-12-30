@@ -1,3 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/*
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -92,9 +100,9 @@
   text-decoration: none;
 }
 
-.user-container {
-  /* display: flex; */
-  flex-wrap: wrap;
+.user-container { 
+  display: flex;
+  flex-wrap: wrap; 
 }
 
 .user-card {
@@ -109,3 +117,5 @@
   border: 1px solid black;
   cursor: pointer;
 }
+
+*/
