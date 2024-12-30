@@ -221,12 +221,12 @@ const Body = () => {
     // Conditional Rendering 
     return listOfRest.length == 0 ? <Shimmer /> : (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input className="search-box" type="text" placeholder="Search" value={searchText} onChange={(e) => {
+            <div className="filter flex">
+                <div className="search m-4 p-4">
+                    <input className="search-box border border-solid border-black" type="text" placeholder="Search Restaurants" value={searchText} onChange={(e) => {
                         setSearchText(e.target.value);
                     }} />
-                    <button className="search-btn" onClick={() => {
+                    <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
                         // Filter the restaurant cards and update the UI
                         // SearchText
                         console.log(searchText);
@@ -234,7 +234,7 @@ const Body = () => {
                         // setListOfRest(filteredRest);
                         setFilteredRest(filteredRest);
                     }}>Search</button>
-                    <button className="filter-btn" onClick={() => {
+                    <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={() => {
                         console.log("Button Clicked");
                         //Filter logic here
                         const filteredList = listOfRest.filter((rest) => rest.info.avgRating > 4.3);
@@ -247,7 +247,7 @@ const Body = () => {
                     </button>
                 </div>
             </div>
-            <div className="restContainer">
+            <div className="flex flex-wrap">
                 {/* restCard  */}
 
                 {   /* Good practice is using map filter reduce */

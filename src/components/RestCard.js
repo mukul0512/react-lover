@@ -9,10 +9,6 @@
 import React from "react";
 import { CDN_URL } from "../utils/constants";
 
-const styleCard = {
-    backgroundColor: "#f0f0f0"
-  }
-
 /* const RestCard = ({ restName, cuisine, starRatting, time }) => {  */  /* Destructured on the fly */
 /*  const {restName, cuisine, starRatting, time} = props; */  /* Destructuring of object i.e. props */
 const RestCard = (props) => {
@@ -22,18 +18,17 @@ const RestCard = (props) => {
     const { deliveryTime } = restData?.info?.sla;
     const { nextCloseTime } = restData?.info?.availability;
     return (
-      <div className="restCard" style={styleCard}>
+      <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
         {/* <img className="restLogo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/24/6dfd4982-fbe9-4188-95f1-548061c61f73_425575.JPG" alt="restLogo" /> */}
   
         {/* <img className="restLogo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/" + restData.info.cloudinaryImageId} alt="cloudinaryImageId" /> */}
 
         {/* named import of CDN_URL */}
-        <img className="restLogo" src={CDN_URL+ cloudinaryImageId} alt="cloudinaryImageId" />
+        <img className="rounded-lg" src={CDN_URL+ cloudinaryImageId} alt="cloudinaryImageId" />
 
         {/* <img className="restLogo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/" + cloudinaryImageId} alt="cloudinaryImageId" /> */}
   
-        {/* <h3>{restName}</h3> */}
-        <h3>{name}</h3>
+        <h3 className="font-bold py-4 text-lg">{name}</h3>
         <h4>{cuisines?.join(", ")}</h4>
         <h4>{avgRating} stars</h4>
         <h4>{costForTwo}</h4>

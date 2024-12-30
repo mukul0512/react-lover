@@ -24,24 +24,27 @@ const Header = () => {
   }, [btnNameReact]);
 
   return (
-    <div className="header">
+    // <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-lg sm: bg-yellow-50 lg:bg-green-50  "> 
       <div className="logoContainer">
         {/* Named import of LOGO_URL */}
-        <img className="logo" src={LOGO_URL} alt="logo" />
+        {/* <img className="logo" src={LOGO_URL} alt="logo" /> */}
+        <img className="w-30" src={LOGO_URL} alt="logo" />
 
         {/* <img className="logo" src="https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148987940.jpg?w=87&t=st=1720367870~exp=1720368470~hmac=167972146782708850090cf16efa9392e4b626c8ae8217a9236ea725779d8c22" alt="logo" /> */}
 
       </div>
-      <div className="navItems">
-        <ul>
-          <li>Online Status: {onlineStatus ? "🤢" : "😡"} </li>
-          <li><Link to="/">Home</Link></li>
+      {/* <div className="navItems"> */}
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">Online Status: {onlineStatus ? "🤢" : "😡"} </li>
+          <li className="px-4"><Link to="/">Home</Link></li>
           {/* using <a href="/">Home<a/> tag is not a good practice because it loads whole page while navigate instead of this use link component imported from react-router-dom  */}
           {/* <li><a href="/about">About</a></li>  */}
-          <li><Link to="/about">About</Link></li> 
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/grocery">Grocery</Link></li>
-          <li><Link to="/cart">Cart</Link></li>
+          <li className="px-4"><Link to="/about">About</Link></li> 
+          <li className="px-4"><Link to="/contact">Contact</Link></li>
+          <li className="px-4"><Link to="/grocery">Grocery</Link></li>
+          <li className="px-4"><Link to="/cart">Cart</Link></li>
           <button className="login" onClick={() => {
             btnNameReact === "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login");
             // console.log(btnNameReact);
