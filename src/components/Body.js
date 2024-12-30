@@ -9,7 +9,7 @@
      
 */
 
-import RestCard from "./RestCard";
+import RestCard, { withPromotedLabel } from "./RestCard";
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -24,7 +24,9 @@ const Body = () => {
 
     const [searchText, setSearchText] = useState("");
 
-    // console.log("Body Rendered");
+    const RestCardPromoted = withPromotedLabel(RestCard);
+
+    console.log("Body Rendered", listOfRest);
 
     useEffect(() => {
         // console.log("useEffect Called");
@@ -36,7 +38,7 @@ const Body = () => {
         const json = await data.json();
         // console.log(json);
         // Optional Chaining
-        // const lastCardIndex = json?.data?.cards.length - 1;
+        // const lastCardIndex = json?.data?.cards?.length - 1;
         setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
@@ -253,7 +255,8 @@ const Body = () => {
                 {   /* Good practice is using map filter reduce */
                     filteredRest.map((rest) => (
                         <Link key={rest.info.id} to={"/city/bangalore/" + rest.info.id}>
-                            <RestCard restData={rest} />
+                            {/* if the restaurant is promoted then add a promoted label to it.  */}
+                            {rest.info.promoted ? (<RestCardPromoted restData={rest} />) : (<RestCard restData={rest} />)}
                         </Link>)
                     )
                     // listOfRest.map((rest) => (<RestCard key={rest.info.id} restData={rest} />))
