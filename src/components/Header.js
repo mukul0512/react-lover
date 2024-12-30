@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     // <div className="header">
-    <div className="flex justify-between bg-pink-100 shadow-lg sm: bg-yellow-50 lg:bg-green-50  "> 
+    <div className="flex justify-between shadow-lg sm: bg-yellow-50 lg:bg-green-50  "> 
       <div className="logoContainer">
         {/* Named import of LOGO_URL */}
         {/* <img className="logo" src={LOGO_URL} alt="logo" /> */}
