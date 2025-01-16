@@ -20,7 +20,7 @@
 
 */
 
-import React, {lazy, Suspense, useEffect, useState} from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -31,6 +31,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
 import RestMenu from "./components/RestMenu";
+import UserContext from '../src/utils/UserContext'
 // import User from "./components/User";
 // import Grocery from "./components/Grocery";
 
@@ -50,29 +51,31 @@ const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
-  const [userInfo, setUserInfo] = useState();
+  const [userName, setUserName] = useState();
   //authentication
   useEffect(() => {
     // Make an API call and send user name and password
     const data = {
       name: "Mukul Karnwal"
     }
-    setUserInfo(data.name);
+    setUserName(data.name);
   }, [])
   console.log(< Body />);
   return (
-    <div className="app">
-      < Header />
-      < Outlet />
+    <UserContext.Provider value={{loggedInUser: userName}}>
+      <div className="app">
+        < Header />
+        < Outlet />
 
-      {/* if path = "/"  */}
-      {/* < Body /> */}
-      {/* if path = "/about"  */}
-      {/* < About /> */}
-      {/* if path = "/contact"  */}
-      {/* < Contact /> */}
-      < Foot />
-    </div>
+        {/* if path = "/"  */}
+        {/* < Body /> */}
+        {/* if path = "/about"  */}
+        {/* < About /> */}
+        {/* if path = "/contact"  */}
+        {/* < Contact /> */}
+        < Foot />
+      </div>
+    </UserContext.Provider>
   );
 };
 
