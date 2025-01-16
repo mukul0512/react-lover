@@ -12,6 +12,8 @@ const RestMenu = () => {
 
     const { restID } = useParams();
 
+    const dummy = "Dummy Data";
+
     const restInfo = useRestMenu(restID);
 
     const [showIndex, setShowIndex] = useState(null);
@@ -48,6 +50,7 @@ const RestMenu = () => {
                     data={category?.card?.card}
                     showItems={index === showIndex ? true : false}
                     setShowIndex={() => setShowIndex(index)}
+                    dummy={dummy}
                 />
             ))}
         </div>

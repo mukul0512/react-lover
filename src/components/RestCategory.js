@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestCategory = ({ data, showItems, setShowIndex }) => {
+const RestCategory = ({ data, showItems, setShowIndex, dummy }) => {
     console.log(data);
 
 // const [showItems, setShowItems] = useState(false);
@@ -19,7 +19,7 @@ const handleClick = () => {
                     <span className="font-bold text-lg">{data?.title} ({data?.itemCards?.length})</span>
                     <span>🔻</span>
                 </div>
-               {showItems && <ItemList items={data?.itemCards} />}
+               {showItems && <ItemList items={data?.itemCards} dummy={dummy} />}
             </div>
             {/* Accordion Body  */}
         </div>
