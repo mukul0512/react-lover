@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestMenu from "../utils/useRestMenu";
 import RestCategory from "./RestCategory";
+import { useState } from "react";
 // import { MENU_API } from "../utils/constants";
 
 const RestMenu = () => {
@@ -12,6 +13,8 @@ const RestMenu = () => {
     const { restID } = useParams();
 
     const restInfo = useRestMenu(restID);
+
+    const [showIndex, setShowIndex] = useState(null);
 
     // useEffect(() => {
     //     fetchMenu();
@@ -38,7 +41,15 @@ const RestMenu = () => {
             <h1 className="font-bold my-6 text-2xl">{name}</h1>
             <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwoMessage}</p>
             {/* Categories accordions */}
-            {categories?.map((category) => (<RestCategory key={category?.card?.card?.title} data={category?.card?.card} />))}
+            {categories?.map((category, index) => (
+                //controlled component
+                <RestCategory
+                    key={category?.card?.card?.title}
+                    data={category?.card?.card}
+                    showItems={index === showIndex ? true : false}
+                    setShowIndex={() => setShowIndex(index)}
+                />
+            ))}
         </div>
     )
 };
