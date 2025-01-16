@@ -62,9 +62,10 @@ const AppLayout = () => {
   }, [])
   console.log(< Body />);
   return (
-    <UserContext.Provider value={{loggedInUser: userName}}>
-      <div className="app">
+    <div className="app">
+        <UserContext.Provider value={{loggedInUser: userName}}>
         < Header />
+    </UserContext.Provider>
         < Outlet />
 
         {/* if path = "/"  */}
@@ -75,7 +76,6 @@ const AppLayout = () => {
         {/* < Contact /> */}
         < Foot />
       </div>
-    </UserContext.Provider>
   );
 };
 
