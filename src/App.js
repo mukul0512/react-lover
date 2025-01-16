@@ -20,7 +20,7 @@
 
 */
 
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -50,6 +50,15 @@ const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+  const [userInfo, setUserInfo] = useState();
+  //authentication
+  useEffect(() => {
+    // Make an API call and send user name and password
+    const data = {
+      name: "Mukul"
+    }
+    setUserInfo(data.name);
+  }, [])
   console.log(< Body />);
   return (
     <div className="app">

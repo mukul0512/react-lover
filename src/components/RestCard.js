@@ -6,14 +6,15 @@
 
 */
 
-import React from "react";
+import React, { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 /* const RestCard = ({ restName, cuisine, starRatting, time }) => {  */  /* Destructured on the fly */
 /*  const {restName, cuisine, starRatting, time} = props; */  /* Destructuring of object i.e. props */
 const RestCard = (props) => {
     const { restData } = props;
-  
+    const {loggedInUser} = useContext(UserContext);
     const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = restData?.info;
     const { deliveryTime } = restData?.info?.sla;
     const { nextCloseTime } = restData?.info?.availability;
@@ -34,6 +35,7 @@ const RestCard = (props) => {
         <h4>{costForTwo}</h4>
         <h4>{deliveryTime} minutes</h4>
         <h4>{nextCloseTime} Date & Time</h4>
+        <h4 className="font-extralight">User: {loggedInUser} </h4>
         {/* <h3>{restData.info.name}</h3> */}
         {/* <h4>{restData.info.cuisines.join(", ")}</h4> */}
         {/* <h4>{restData.info.avgRating} stars</h4> */}

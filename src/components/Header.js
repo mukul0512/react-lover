@@ -5,10 +5,12 @@
 -----------------------------
 */
 
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext, useState } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -16,16 +18,20 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
 
+  const {loggedInUser} = useContext(UserContext);
+  console.log(loggedInUser);
+  
+
   // if no dependency array => useEffect is called on every render.
   // if dependency array is empty = [] => useEffect is called on initial render (just once).
   // if dependency array is [btnNameReact] => called every time btnNameReact is updated. 
-  useEffect(() => {
-    console.log("useEffect called");
-  }, [btnNameReact]);
+  // useEffect(() => {
+  //   console.log("useEffect called");
+  // }, [btnNameReact]);
 
   return (
     // <div className="header">
-    <div className="flex justify-between shadow-lg sm: bg-yellow-50 lg:bg-green-50  "> 
+    <div className="flex justify-between shadow-lg sm: bg-yellow-50 lg:bg-green-50  ">
       <div className="logoContainer">
         {/* Named import of LOGO_URL */}
         {/* <img className="logo" src={LOGO_URL} alt="logo" /> */}
@@ -41,17 +47,20 @@ const Header = () => {
           <li className="px-4"><Link to="/">Home</Link></li>
           {/* using <a href="/">Home<a/> tag is not a good practice because it loads whole page while navigate instead of this use link component imported from react-router-dom  */}
           {/* <li><a href="/about">About</a></li>  */}
-          <li className="px-4"><Link to="/about">About</Link></li> 
+          <li className="px-4"><Link to="/about">About</Link></li>
           <li className="px-4"><Link to="/contact">Contact</Link></li>
           <li className="px-4"><Link to="/grocery">Grocery</Link></li>
           <li className="px-4"><Link to="/cart">Cart</Link></li>
-          <button className="login" onClick={() => {
-            btnNameReact === "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login");
-            // console.log(btnNameReact);
-          }}
+          <button
+            className="login"
+            onClick={() => {
+              btnNameReact === "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login");
+              // console.log(btnNameReact);
+            }}
           >
             {btnNameReact}
           </button>
+          <li className="px-4 font-bold">{loggedInUser} </li>
         </ul>
       </div>
     </div>
