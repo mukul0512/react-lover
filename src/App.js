@@ -31,7 +31,9 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
 import RestMenu from "./components/RestMenu";
-import UserContext from '../src/utils/UserContext'
+import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 // import User from "./components/User";
 // import Grocery from "./components/Grocery";
 
@@ -62,20 +64,22 @@ const AppLayout = () => {
   }, [])
   console.log(< Body />);
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        < Header />
-        < Outlet />
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          < Header />
+          < Outlet />
 
-        {/* if path = "/"  */}
-        {/* < Body /> */}
-        {/* if path = "/about"  */}
-        {/* < About /> */}
-        {/* if path = "/contact"  */}
-        {/* < Contact /> */}
-        < Foot />
-      </div>
-    </UserContext.Provider>
+          {/* if path = "/"  */}
+          {/* < Body /> */}
+          {/* if path = "/about"  */}
+          {/* < About /> */}
+          {/* if path = "/contact"  */}
+          {/* < Contact /> */}
+          < Foot />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
