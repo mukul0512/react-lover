@@ -10,10 +10,11 @@
 */
 
 import RestCard, { withPromotedLabel } from "./RestCard";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 // import restList from "../utils/restList";
 
 const Body = () => {
@@ -46,8 +47,13 @@ const Body = () => {
     const onlineStatus = useOnlineStatus();
 
     if (onlineStatus === false) {
-        return <h1>Looks like you are offline!!! Please check your internet connection.</h1>
+        return (
+            <h1>Looks like you are offline!!! Please check your internet connection.</h1>
+        );
     }
+
+    const { loggedInUser, setUserName } = useContext(UserContext);
+
 
     // Conditional Rendering
     // if (listOfRest.length === 0) {
@@ -247,6 +253,10 @@ const Body = () => {
                     }}>
                         Top Restaurants
                     </button>
+                </div>
+                <div className="search m-4 p-4 flex items-center">
+                    <label>User Name : </label>
+                    <input className="border border-black p-2 m-2" value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
                 </div>
             </div>
             <div className="flex flex-wrap">
