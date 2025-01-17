@@ -115,15 +115,14 @@ const appRouter = createBrowserRouter([
       },
 
       {
-        path: "/cart",
-        element: < Cart />
+        path: "/city/bangalore/:restID",  // Dynamic Routing
+        element: < RestMenu />
       },
 
       {
-        path: "/city/bangalore/:restID",  // Dynamic Routing
-        element: < RestMenu />
+        path: "/cart",
+        element: < Cart />
       }
-
     ],
 
     errorElement: <Error />
