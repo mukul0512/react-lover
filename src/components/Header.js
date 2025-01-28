@@ -15,16 +15,16 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
-  console.log("Header Render");
+  // console.log("Header Render");
 
   const onlineStatus = useOnlineStatus();
 
   const {loggedInUser} = useContext(UserContext);
-  console.log(loggedInUser);
+  // console.log(loggedInUser);
 
   // Subscribing to the store using a Selector hook
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  // console.log(cartItems);
   
 
   // if no dependency array => useEffect is called on every render.

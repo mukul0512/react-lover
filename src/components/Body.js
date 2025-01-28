@@ -237,13 +237,13 @@ const Body = () => {
                     <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
                         // Filter the restaurant cards and update the UI
                         // SearchText
-                        console.log(searchText);
+                        // console.log(searchText);
                         const filteredRest = listOfRest.filter((rest) => rest.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         // setListOfRest(filteredRest);
                         setFilteredRest(filteredRest);
                     }}>Search</button>
                     <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={() => {
-                        console.log("Button Clicked");
+                        // console.log("Button Clicked");
                         //Filter logic here
                         const filteredList = listOfRest.filter((rest) => rest.info.avgRating > 4.3);
                         setListOfRest(filteredList);

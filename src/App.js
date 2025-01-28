@@ -62,7 +62,7 @@ const AppLayout = () => {
     }
     setUserName(data.name);
   }, [])
-  console.log(< Body />);
+  // console.log(< Body />);
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>

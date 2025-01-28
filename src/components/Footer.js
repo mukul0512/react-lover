@@ -10,9 +10,9 @@ import React from "react";
 
 const Footer = () => {
     return (
-      <div className="footer">
+      <div className="footer flex justify-center p-4 m-4">
         <div className="footerContainer">
-          <img className="logo" src="" alt="footer" />
+          {/* <img className="logo" src="" alt="footer" /> */}
         </div>
         <div className="footerItems">
           <ul>

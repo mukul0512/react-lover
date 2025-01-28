@@ -2,7 +2,7 @@
 import ItemList from "./ItemList";
 
 const RestCategory = ({ data, showItems, setShowIndex, dummy }) => {
-    console.log(data);
+    // console.log(data);
 
 // const [showItems, setShowItems] = useState(false);
 

@@ -11,7 +11,7 @@ const Cart = () => {
     // The above and this is the same for subscribing to the store but but but ...
     // const store = useSelector((store) => store); // here we are subscribing to the whole store but it is very less efficient
     // const cartItems = store.cart.items; // here we are extracting the items. 
-    console.log(cartItems);
+    // console.log(cartItems);
 
     const dispatch = useDispatch()
 
