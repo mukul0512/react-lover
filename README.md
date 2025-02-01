@@ -42,6 +42,24 @@ Let's create a Food Ordering App😋 🚀🚀🚀
 
 ------------------------------------------
 
+<!--  
+<RestCard restName="KFC" />  
+-->
+props - We are passing props as an arguments to the component or function.
+
+and receiving it as a js object and use it wherever you want inside the component using
+example-             
+const RestCard = (props) => {    <!-- Passing props inside a normal JS Function -->
+  console.log(props);
+  const {restName, cuisine} = props;
+  } 
+return(  <!-- return a piece of JSX Code ...  -->
+  <!-- <h1>{props.restName}  or {restName} </h1> -->
+  <!-- <h2>{props.cuisine} or {cuisine} </h2> etc ... -->
+) 
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 Two types of Export/Import
 
 
@@ -58,8 +76,9 @@ import {Component} from "path";
 
 ------------------------------------------------------
 # React Hooks
- (Normal JS utility functions)
-- useState() - Superpowerful State Variables in react
+ (Normal JS utility functions - wrote by facebook developers)
+- useState() - Super-powerful State Variables in react.
+  * Whenever a state variable is update react will re-render the components.
 - useEffect()
 
 -------------------------------------------------------
