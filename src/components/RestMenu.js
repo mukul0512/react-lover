@@ -34,20 +34,21 @@ const RestMenu = () => {
         return (<Shimmer />)
     }
 
-    const { name, cuisines, costForTwoMessage } = restInfo?.cards[2]?.card?.card?.info;
-    const { itemCards } = restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-    const categories = restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(c => c?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-    // console.log(categories);
+    const { name, cuisines, costForTwo } = restInfo?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    const { delivery } = restInfo?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    const brands = restInfo?.cards[6]?.card?.card?.filter(c => c?.card?.card?.["@type"] === "type.googleapis.com/swiggy.seo.widgets.v1.BrandsContent")
+    // console.log(brands);
     return (
         <div className="text-center">
             <h1 className="font-bold my-6 text-2xl">{name}</h1>
-            <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwoMessage}</p>
-            {/* Categories accordions */}
-            {categories?.map((category, index) => (
+            <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwo}</p>
+            <p className="font-bold text-lg">{delivery}</p>
+            {/* Brands accordions */}
+            {brands.map((brand, index) => (
                 //controlled component
                 <RestCategory
-                    key={category?.card?.card?.title}
-                    data={category?.card?.card}
+                    key={brand?.card?.card?.title}
+                    data={brand?.card?.card}
                     showItems={index === showIndex ? true : false}
                     setShowIndex={() => setShowIndex(index)}
                     dummy={dummy}
